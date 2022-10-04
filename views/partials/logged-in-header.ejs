@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title id="page-title">ratemytone</title>
+    <link rel="icon" type="image/png" sizes="32x32" href="/imgs/favicon-32x32.png" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" />
+    <link rel="stylesheet" href="/css/style.css" />
+</head>
+<div class="flex flex-col w-full min-h-screen overflow-x-hidden">
+    <nav>
+        <div class="navbar flex bg-base-100">
+            <div class="navbar-start">
+                <div class="dropdown">
+                    <label tabindex="0" class="btn btn-ghost lg:hidden">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24"
+                            stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M4 6h16M4 12h8m-8 6h16" />
+                        </svg>
+                    </label>
+                    <ul tabindex="0"
+                        class="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
+                        <li>
+                            <a href="/feed">Explore</a>
+                        </li>
+                        <li>
+                            <a href="/my-tones">My Tones</a>
+                        </li>
+                        <li>
+                            <a href="/bookmarks">Favorite Tones</a>
+                        </li>
+                        <li>
+                            <a href="/profile">Add a Tone</a>
+                        </li>
+                    </ul>
+                </div>
+                <a href="/feed" class="btn btn-ghost normal-case text-xl">
+                    <img src="/imgs/vis.svg" alt="logo" width="50" height="50"><span class="pl-2">ratemytone</span>
+                </a>
+            </div>
+            <div class="navbar-center hidden lg:flex">
+                <ul class="menu menu-horizontal p-0">
+                    <li>
+                        <a href="/feed">Explore</a>
+                    </li>
+                    <li>
+                        <a href="/my-tones">My Tones</a>
+                    </li>
+                    <li>
+                        <a href="/bookmarks">Favorite Tones</a>
+                    </li>
+                    <li>
+                        <a href="/profile">Add a Tone</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="navbar-end">
+                <a href="/logout" class="btn normal-case" role="button">Logout</a>
+            </div>
+        </div>
+    </nav>

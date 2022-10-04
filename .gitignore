@@ -1,0 +1,5 @@
+node_modules
+.env
+.vscode
+tailwind.css
+tailwind.config.js

@@ -1,0 +1,52 @@
+<%- include('partials/logged-in-header') -%>
+<header class="bg-base-300 shadow">
+    <div class="mx-auto max-w-7xl py-6 px-4 sm:px-6 lg:px-8">
+        <h1 class="text-3xl font-bold tracking-tight text-900 text-center"><%= post.title %></h1>
+    </div>
+</header>
+<div class="flex flex-grow mx-auto h-auto">
+<div class="flex flex-col mx-auto max-w-7xl lg:flex-row">
+    <div class="grid mx-auto flex-auto card">
+        <div class="group relative">
+            <div class="card-body">
+                <h3 class="text-2xl font-bold tracking-tight text-600 py-2"><%= post.caption %></h3>
+                <p>By: <%= user.userName %></p>
+                <figure><img src="<%= post.image%>" class="card w-96" alt="Responsive image"></figure>
+                <div class="card-actions justify-center">
+                    <form class="card-title"
+                        action="/post/likePost/<%= post.id %>?_method=PUT"
+                        method="POST">
+                        <button class="btn btn-secondary" type="submit">
+                            <i class="<%if(post.likes.includes(user.id)){ %>fa-solid fa-heart<%} else { %>fa-regular fa-heart <% }%>"></i>
+                        </button>
+                        <h5 class="card-title"><%= post.likes.length - 1 %></h5>
+                    </form>
+                    <form 
+                        action="/post/bookmarkPost/<%= post.id %>?_method=PUT"
+                        method="POST">
+                        <button class="btn btn-primary" type="submit">
+                            <i class="<%if(post.bookmarks.includes(user.id)){ %>fa-solid fa-bookmark <%} else { %>fa-regular fa-bookmark <% }%>"></i>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="divider lg:divider-horizontal"></div>
+    <div class="grid mx-auto flex-auto card">
+        <div class="group relative">
+            <div class="card-body">
+                <h3 class="text-2xl font-bold tracking-tight text-600 py-2"><%= post.ampType %></h3>
+                <h4>Control positions</h4>
+                <div class="divider lg:divider-vertical"></div>
+                    <ol class="list-group list-group-numbered">
+                    <% for(var i=0; i<post.positions.length; i++) {%>
+                        <li class="p-1"><%= post.positions[i] %></li>
+                    <% } %>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<%- include('partials/footer') -%>

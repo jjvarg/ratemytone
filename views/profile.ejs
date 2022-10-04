@@ -1,0 +1,82 @@
+<%- include('partials/logged-in-header') -%>
+<header class="bg-base-300 shadow">
+    <div class="mx-auto max-w-7xl py-6 px-4 sm:px-6 lg:px-8">
+        <h1 class="text-3xl font-bold tracking-tight text-900 text-center">Submit a tone</h1>
+    </div>
+</header>
+<div class="flex flex-grow mx-auto h-auto">
+        <div class="mx-auto max-w-3xl py-6 sm:px-6 lg:px-8">
+            <form action="/post/createPost" enctype="multipart/form-data" method="POST">
+                <div class="form-control">
+                    <label for="title" class="label">
+                        <span>What will you name your tone?</span>
+                    </label>
+                    <label class="input-group input-group-vertical">
+                        <span>Title</span>
+                        <input type="text" class="input input-bordered" id="title" name="title" placeholder="Please enter a title" />
+                    </label>
+                </div>
+                <div class="form-control">
+                    <label for="toneType" class="label">
+                        <span>What type of tone are you submitting?</span>
+                    </label>
+                    <label class="input-group input-group-vertical">
+                        <span>Tone type</span>
+                        <select class="select select-bordered" aria-label="Default select example" id="toneType" name="toneType">
+                            <option selected>Select your tone type</option>
+                            <option value="Clean">Clean</option>
+                            <option value="Edge">Edge</option>
+                            <option value="Crunch">Crunch</option>
+                            <option value="High Gain">High Gain</option>
+                        </select>
+                    </label>
+                </div>
+                <div class="form-control">
+                    <label for="basic-url" class="label">
+                        <span>What amp did you use?</span>
+                    </label>
+                    <label class="input-group input-group-vertical">
+                        <span>Amp type</span>
+                        <select class="select select-bordered" aria-label="Default select example" id="ampType" name="ampType">
+                            <option selected>Select your amp</option>
+                            <option value="Orange OR15">Orange OR15</option>
+                            <option value="Orange Dark Terror">Orange Dark Terror</option>
+                            <option value="Orange Jim Root Terror">Orange Jim Root Terror</option>
+                            <option value="Orange Tiny Terror">Orange Tiny Terror</option>
+                            <option value="Orange Rocker 15 Terror">Orange Rocker 15 Terror</option>
+                            <option value="Orange Brent Hinds Terror">Orange Brent Hinds Terror</option>
+                            <option value="Orange Dual Terror">Orange Dual Terror</option>
+                        </select>
+                    </label>
+                </div>
+                <div class="form-control">
+                    <label for="caption" class="label">
+                        <span>How would you describe your tone?</span>
+                    </label>
+                    <label class="input-group input-group-vertical">
+                        <span>Description</span>
+                        <textarea class="input input-bordered" id="caption" name="caption" placeholder="Please describe your tone."></textarea>
+                    </label>
+                </div>
+                <div class="form-control">
+                    <label for="positions" class="label">
+                        <span>Where did you have your controls positioned?</span>
+                    </label>
+                    <label class="input-group input-group-vertical">
+                        <span>Amp/EQ Knob Positions</span>
+                        <textarea class="input input-bordered h-36" id="positions" name="positions" placeholder="Please tell us where you had your controls set." rows="5"></textarea>
+                    </label>
+                </div>
+                <div class="form-control">
+                    <label for="imgUpload" class="label">
+                        <span>Click the "Browse" button below to upload your recording</span>
+                    </label>
+                    <input type="file" id="imageUpload" name="file">
+                </div>
+                <div class="form-control">
+                    <button type="submit" class="btn btn-primary normal-case" value="Upload">Submit your tone</button>
+                </div>
+            </form>
+        </div>
+</div>
+<%- include('partials/footer') -%>
