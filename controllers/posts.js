@@ -22,8 +22,13 @@ module.exports = {
     },
     getBookmarks: async (req, res) => {
         try {
-            const posts = await Post.find({ user: req.user.id });
-            res.render("favorite-tones.ejs", { posts: posts, user: req.user });
+            const posts = await Post.find({ bookmarks: req.user.id });
+            var users = []
+            for (i in posts) {
+                var user = await User.findById(posts[i].user)
+                users.push(user.userName)
+            }
+            res.render("favorite-tones.ejs", { posts: posts, userName: users, user: req.user });
         } catch (err) {
             console.log(err);
         }
@@ -45,7 +50,12 @@ module.exports = {
         try {
             const post = await Post.findById(req.params.id);
             const comments = await Comment.find({ post: req.params.id }).sort({ createdAt: "desc" }).lean();
-            res.render("post.ejs", { post: post, user: req.user, comments: comments });
+            var commentors = []
+            for (i in comments) {
+                var commentor = await User.findById(comments[i].user)
+                commentors.push(commentor.userName)
+            }
+            res.render("post.ejs", { post: post, user: req.user, comments: comments, commentors: commentors });
         } catch (err) {
             console.log(err);
         }

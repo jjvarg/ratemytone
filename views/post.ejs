@@ -5,12 +5,14 @@
     </div>
 </header>
 <div class="flex flex-grow mx-auto h-auto">
-<div class="flex flex-col mx-auto max-w-7xl lg:flex-row">
+    <div class="flex flex-col w-full py-10">
+        <div class="grid h-20 card bg-base-300 rounded-box place-items-center">
+            <div class="flex flex-col mx-auto max-w-7xl lg:flex-row">
     <div class="grid mx-auto flex-auto card">
         <div class="group relative">
             <div class="card-body">
                 <h3 class="text-2xl font-bold tracking-tight text-600 py-2"><%= post.caption %></h3>
-                <p>By: <%= user.userName %></p>
+                <p>By: <%= user.userName %>  </p>
                 <figure><img src="<%= post.image%>" class="card w-96" alt="Responsive image"></figure>
                 <div class="card-actions justify-center">
                     <form class="card-title"
@@ -48,5 +50,30 @@
             </div>
         </div>
     </div>
+    </div>
+    <div class="divider"></div>
+    <div class="grid h-20 card bg-base-300 rounded-box place-items-center">
+    <div class="p-4">
+        <div>
+            <ul class="px-2">
+                <% for(var i=0; i<comments.length; i++) {%>
+                    <li class="py-2">
+                        <p><span class="font-bold"><%= commentors[i]%></span> <%= comments[i].comment%></p>
+                    </li>
+                <% } %>
+            </ul>
+        </div>
+        <div class="form-control">
+            <form action="/comment/createComment/<%=post._id%>" method="POST">
+                <div class="input-group">
+                    <!--<label for="comment" class="form-label">Comment</label>-->
+                    <input type="text" placeholder="Add a comment..." class="input input-bordered w-full max-w-xs" id="comment" name="comment" />
+                    <button type="submit" class="btn btn-square normal-case">Submit</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+</div>
 </div>
 <%- include('partials/footer') -%>
