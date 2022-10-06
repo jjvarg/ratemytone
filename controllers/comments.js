@@ -1,8 +1,16 @@
-const Comment = require("../models/Comment")
+const Comment = require("../models/Comment");
 const Post = require("../models/Post");
 const User = require("../models/User");
 
 module.exports = {
+    getComment: async (req, res) => {
+        try {
+            const comment = await Comment.findById(req.params.id);
+            res.render("post.ejs", { user: req.user, comment: comment });
+        } catch (err) {
+            console.log(err);
+        }
+    },
     createComment: async (req, res) => {
         try {
             await Comment.create({
@@ -51,6 +59,18 @@ module.exports = {
             } catch (err) {
                 console.log(err)
             }
+        }
+    },
+    deleteComment: async (req, res) => {
+        try {
+            // Find post by id
+            let comment = await Comment.findById({ _id: req.params.id });
+            // Delete post from db
+            await Comment.remove({ _id: req.params.id });
+            console.log("Comment has been deleted");
+            res.redirect("back");
+        } catch (err) {
+            res.redirect("back");
         }
     },
 };

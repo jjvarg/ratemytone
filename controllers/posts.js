@@ -49,13 +49,14 @@ module.exports = {
     getPost: async (req, res) => {
         try {
             const post = await Post.findById(req.params.id);
+            const poster = await User.findById(post.user);
             const comments = await Comment.find({ post: req.params.id }).sort({ createdAt: "desc" }).lean();
             var commentors = []
             for (i in comments) {
                 var commentor = await User.findById(comments[i].user)
                 commentors.push(commentor.userName)
             }
-            res.render("post.ejs", { post: post, user: req.user, comments: comments, commentors: commentors });
+            res.render("post.ejs", { post: post, user: req.user, poster: poster, comments: comments, commentors: commentors });
         } catch (err) {
             console.log(err);
         }
@@ -98,8 +99,8 @@ module.exports = {
                         $pull: { 'likes': req.user.id }
                     })
 
-                console.log('Removed user from likes array')
-                res.redirect('back')
+                console.log("Removed user from likes array")
+                res.redirect("back")
             } catch (err) {
                 console.log(err)
             }
@@ -112,8 +113,8 @@ module.exports = {
                         $addToSet: { 'likes': req.user.id }
                     })
 
-                console.log('Added user to likes array')
-                res.redirect(`back`)
+                console.log("Added user to likes array")
+                res.redirect("back")
             } catch (err) {
                 console.log(err)
             }
