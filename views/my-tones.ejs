@@ -5,24 +5,25 @@
     </div>
 </header>
 <div class="flex flex-grow mx-auto h-auto">
-<div class="justify-center mx-auto max-w-7xl py-10">
+    <div class="justify-center mx-auto max-w-7xl py-10">
         <div class="grid justify-items-center grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-3 xl:gap-x-8">
         <% for(let i=0; i<posts.length; i++) {%>
-                <div class="card w-80 bg-base-300 shadow-xl">
+                <div class="card card-compact w-80 bg-base-300 shadow-xl">
                     <a href="/post/<%= posts[i]._id%>" class="hover:opacity-75">
                         <img src="<%= posts[i].image%>" alt="...">
                     </a>
-                    <div class="card-body">
-                        <h5 class="card-title"><%= posts[i].title%>
+                    <div class="card-actions justify-end pt-2 pr-2">
                         <div class="badge badge-secondary"><i class="px-1 fa fa-heart"></i><%= posts[i].likes.length - 1 %></div>
-                        </h5>
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title"><%= posts[i].title%></h5>
                         <p><small>Submitted by: You</small></p>
                         <p><%= posts[i].caption %></p>
                     </div>
-                    <div class="card-actions justify-end px-2">
-                        <%if(posts.user == user.id){ %>
-                            <form action="/post/deletePost/<%= post.id %>?_method=DELETE" method="POST">
-                                <button class="btn btn-primary fa fa-trash" type="submit"></button>
+                    <div class="card-actions justify-end p-2">
+                        <%if(posts[i].user == user.id){ %>
+                            <form action="/post/deletePost/<%= posts[i].id %>?_method=DELETE" method="POST">
+                                <button class="btn btn-sm btn-accent fa fa-trash" type="submit"></button>
                             </form>
                         <%}%>
                     </div>

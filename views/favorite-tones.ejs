@@ -9,14 +9,15 @@
         <div class="grid justify-items-center grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-3 xl:gap-x-8">
             <% for(let i=0; i<posts.length; i++) {%>
                 <%if(posts[i].bookmarks.includes(user.id)) {%>
-                    <div class="card w-80 bg-base-300 shadow-xl">
+                    <div class="card card-compact w-80 bg-base-300 shadow-xl">
                         <a href="/post/<%= posts[i]._id%>" class="hover:opacity-75">
                             <img class="hover:opacity-75" src="<%= posts[i].image%>" alt="...">
                         </a>
-                        <div class="card-body">
-                            <h5 class="card-title"><%= posts[i].title%>
+                        <div class="card-actions justify-end pt-2 pr-2">
                             <div class="badge badge-secondary"><i class="px-1 fa fa-heart"></i><%= posts[i].likes.length - 1 %></div>
-                            </h5>
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title"><%= posts[i].title%></h5>
                             <p><small>Submitted by: <%= userName[i]%></small></p>
                             <p><%= posts[i].caption%></p>
                         </div>
