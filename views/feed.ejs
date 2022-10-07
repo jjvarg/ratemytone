@@ -5,8 +5,8 @@
     </div>
 </header>
 <div class="flex flex-grow mx-auto h-auto">
-    <div class="justify-center mx-auto max-w-7xl py-10">
-        <div class="grid justify-items-center grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-3 xl:gap-x-8">
+    <div class="mx-auto max-w-7xl py-10">
+        <div class="grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-3 xl:gap-x-8">
             <% for(let i=0; i<posts.length; i++) {%>
                 <div class="card card-compact w-80 bg-base-300 shadow-xl">
                     <a href="/post/<%= posts[i]._id%>" class="hover:opacity-75">
