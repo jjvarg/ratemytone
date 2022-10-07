@@ -46,39 +46,7 @@
                     </div>
                 </div>
             </div>
-            <div class="divider"></div>
-            <div class="grid card bg-base-300 rounded-box place-items-center">
-                <div class="flex flex-col mx-auto w-full p-4">
-                    <div class="p-4">
-                        <% for(let i=0; i<comments.length; i++) {%>
-                            <!-- <div>
-                                <p>This post has no comments. Would you like to be the first to post feedback?</p>
-                            </div> -->
-                            <div class="flex flex-row">
-                                <div class="flex-grow justify-start">
-                                    <p><span class="font-bold"><%=commentors[i]%></span> <%= comments[i].comment%></p>
-                                    <small><%if(comments[i].likes.length > 1){ %>Likes <%=comments[i].likes.length - 1 %><%} else { %> <% } %></small>
-                                </div>
-                                <div class="grid place-content-center">
-                                    <form class="card-title" action="/comment/likeComment/<%= comments[i]._id %>?_method=PUT" method="POST">
-                                        <button class="btn btn-sm btn-circle btn-ghost" type="submit">
-                                            <span class="<%if(comments[i].likes.includes(user.id)){ %>fa-solid fa-heart<%} else { %>fa-regular fa-heart <% }%>"</span>
-                                        </button>
-                                    </form>
-                                </div>
-                            </div>
-                        <% } %>
-                    </div>
-                    <div class="form-control">
-                        <form action="/comment/createComment/<%=post._id%>" method="POST">
-                            <div class="input-group">
-                                <input type="text" placeholder="Add a comment..." class="input input-bordered w-full" id="comment" name="comment" />
-                                    <button type="submit" class="btn normal-case">Submit</button>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
+            <%- include('partials/comments') -%>           
         </div>
     </div>
 <%- include('partials/footer') -%>
